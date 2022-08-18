@@ -2,7 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryBox = document.querySelector(".gallery");
-let instance;
+
 // * add elements in gallery
 
 const galleryEl = galleryItems
@@ -24,6 +24,8 @@ galleryBox.insertAdjacentHTML("afterbegin", galleryEl);
 
 // * delegation of events
 
+let instance = basicLightbox.create(`<img width='800' height='600'></img>`);
+
 function openGalleryImg(e) {
   e.preventDefault();
 
@@ -31,11 +33,10 @@ function openGalleryImg(e) {
     return;
   }
 
-  console.log(e.target.dataset.source);
+  const srcOnOriginal = e.target.dataset.source;
+  const elem = instance.element().lastElementChild.lastElementChild;
 
-  instance = basicLightbox.create(
-    `<img src='${e.target.dataset.source}' width='800' height='600'></img>`
-  );
+  elem.setAttribute("src", srcOnOriginal);
 
   instance.show();
 
