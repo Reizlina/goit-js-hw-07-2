@@ -40,7 +40,7 @@ function openGalleryImg(e) {
 
   instance.show();
 
-  window.addEventListener("keydown", closeModal);
+  document.addEventListener("keydown", closeModal);
 }
 
 galleryBox.addEventListener("click", openGalleryImg);
@@ -48,9 +48,8 @@ galleryBox.addEventListener("click", openGalleryImg);
 // * close modal
 
 function closeModal(e) {
-  console.log();
   if (e.code === "Escape") {
     instance.close();
-    window.removeEventListener("keydown", closeModal);
+    document.removeEventListener("keydown", closeModal);
   }
 }
